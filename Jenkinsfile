@@ -12,7 +12,7 @@ pipeline{
             }
         }
       
-        stage('Unit Test'){
+        stage('Sonar'){
             enviroment{
                 scannerHome= tool 'SONAR_SCANNER'
             }
