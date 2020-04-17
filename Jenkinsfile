@@ -58,6 +58,14 @@ pipeline{
                 
             }
         }
+           stage('Fucional Test Test'){
+                steps{
+                dir('fucional-test') {
+                git credentialsId: 'github_login', url: 'https://github.com/Rommelfoxx/tasks-functional-tests'
+                bat 'mvn test'
+                    }
+                }
+            }
     }
 }
 
