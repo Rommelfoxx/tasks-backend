@@ -47,6 +47,14 @@ pipeline{
                 bat 'mvn test'
                     }
                 }
+            }
+            stage('Deploy Front'){
+                steps{
+                dir('frontend') {
+                git credentialsId: 'github_login', url: 'https://github.com/Rommelfoxx/tasks-frontend'
+                bat 'mvn clean package -DskipTests=true'
+                deploy adapters: [tomcat8(credentialsId: 'Tomcatlogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target\\tasks.war'
+                    }
                 
             }
     }
