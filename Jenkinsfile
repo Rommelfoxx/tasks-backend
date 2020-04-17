@@ -46,6 +46,7 @@ pipeline{
                 git credentialsId: 'github_login', url: 'https://github.com/Rommelfoxx/tasks-api-test'
                 bat 'mvn test'
                     }
+                }
                 
             }
     }
