@@ -78,7 +78,7 @@ pipeline{
 
                 steps{
                     sleep(10)
-                    dir('functional-test'){
+                    dir('fucional-test'){
                         bat 'mvn verify -Dskip.surefire.tests'
                     }
                 }
