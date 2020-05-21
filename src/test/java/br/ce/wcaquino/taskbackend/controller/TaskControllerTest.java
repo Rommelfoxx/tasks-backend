@@ -82,5 +82,34 @@ public class TaskControllerTest {
 
 		
 	}
+	
+	@Test
+	public void deveRemoverTarefaComSucesso() throws ValidationException {
+		
+		Task todo = new Task();
+		todo.setId((long) 1);
+		todo.setDueDate(LocalDate.now());
+	    todo.setTask("Descrição");
+		controller.save(todo);
+		controller.delete(todo.getId());
+	}
+	
+	@Test
+	public void naoDeveRemoverTarefa()  {
+		
+		Task todo = new Task();
+		todo.setId((long) 3);
+		todo.setDueDate(LocalDate.now());
+	    todo.setTask("Descrição");
+		
+		
+	    try{
+	    controller.save(todo);
+		controller.delete(null);
+		Assert.fail("Não deviria chegar neste ponto");
+	    }catch (ValidationException e){
+		Assert.assertEquals("Valor não pode ser nulo", e.getMessage());
+		}
+	}
 
 }

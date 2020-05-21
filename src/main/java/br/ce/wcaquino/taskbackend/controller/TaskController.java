@@ -49,7 +49,11 @@ public class TaskController {
 	
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable Long id) throws ValidationException {
+		if(id ==null ){
+			throw new ValidationException("Valor não pode ser nulo");
+		}
 		todoRepo.deleteById(id);
+		
 	}
 }
